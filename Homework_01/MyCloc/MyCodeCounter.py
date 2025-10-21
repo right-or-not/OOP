@@ -1,19 +1,15 @@
 """
-MyCloc: Count the Lines of blank, comment, code in Files
+MyCodeCounter: Count the Lines of blank, comment, code in Files or Path
 - Avaliable File Format: Python, Java
 - What you should do If you want to Add File Format: 
     1. Add your File Format Name in 'CodeCounter.stats'
     2. Add the Regular Expression in 'CodeCounter.patterns'
 """
-# print("Hello world!\n") # Hello world
-
 
 import os
-import sys
-import argparse
 import re
 
-class CodeCounter:
+class MyCodeCounter:
     def __init__(self):
         # Counter
         self.stats = {
@@ -313,34 +309,3 @@ class CodeCounter:
         print("-" * 95)
         print(f"{'SUM: ':<15} {total_files:>15} {total_blank:>15} {total_comment:>15} {total_code:>15} {total_all:>15}")
         print("-" * 95)
-
-
-'''
-main function - main()
-'''
-def main():
-    # init a parser
-    parser = argparse.ArgumentParser(description='Count the lines of the code file')
-    # add an argument
-    parser.add_argument('path', help='the Path to be analyzed')
-    
-    args = parser.parse_args()
-    
-    if not os.path.exists(args.path):
-        print(f"[ERROR]: Path '{args.path}' not exist! ! !")
-        sys.exit(1)
-    
-    
-    # init a CodeCounter Class
-    counter = CodeCounter()
-    
-    print()
-    print(f"Analyzing the Path: {args.path}")
-    
-    if counter.process_path(args.path):
-        # multi files => show the summary information
-        if os.path.isdir(args.path) or len(sys.argv) > 2:
-            counter.print_summary()
-
-if __name__ == "__main__":
-    main()

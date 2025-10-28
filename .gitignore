@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv*/
+env/
+
+# dataset
+ML/MNIST/
+ML/CIFAR10/
+
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# PyTorch / torch cache
+*.pt
+*.pth
